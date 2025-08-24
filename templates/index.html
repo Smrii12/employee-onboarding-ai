@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal | Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --warning: #f8961e;
+            --danger: #f94144;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .login-header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            clip-path: polygon(50% 50%, 0 0, 100% 0);
+        }
+
+        .login-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .input-field {
+            position: relative;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        .input-field input:focus {
+            border-color: var(--accent);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+            outline: none;
+        }
+
+        .input-field i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: var(--danger);
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.2;
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            background: var(--warning);
+            top: 80%;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                max-width: 100%;
+            }
+            
+            .login-header {
+                padding: 25px 20px;
+            }
+            
+            .login-body {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Welcome Back!</h1>
+            <p>Sign in to access your employee dashboard</p>
+        </div>
+
+        <div class="login-body">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Let Me In
+                </button>
+
+                <div id="errorMessage" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Invalid credentials. Please try again.
+                </div>
+            </form>
+
+            <div class="login-footer">
+                New employee? <a href="#">Contact HR</a> for account setup
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Show loading state
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Redirect to admin dashboard
+                    window.location.href = data.redirect;
+                } else {
+                    errorMessage.textContent = data.error || 'Invalid credentials. Please try again.';
+                    errorMessage.style.display = 'block';
+                    setTimeout(() => {
+                        errorMessage.style.display = 'none';
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                errorMessage.textContent = 'An error occurred during login. Please try again.';
+                errorMessage.style.display = 'block';
+            } finally {
+                // Reset button state
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+
+        // Add input focus effects
+        const inputs = document.querySelectorAll('.input-field input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('i').style.color = 'var(--accent)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.querySelector('i').style.color = 'var(--primary)';
+            });
+        });
+    </script>
+</body>
+</html>
