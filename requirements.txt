@@ -1,5 +1,6 @@
-Flask==2.3.3
-Flask-Cors==4.0.0
-scikit-learn==1.3.0
-numpy==1.25.2
-pandas==2.0.3
+flask
+flask-cors
+gunicorn
+scikit-learn
+numpy
+pandas
